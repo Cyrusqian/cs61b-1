@@ -135,9 +135,5 @@ public class LinkedListDeque<Elem> implements Iterator<Elem>{
         Iterator itr = new LinkedListDeque();
         return itr;
     }
-
-    public static void main(String args[]){
-        LinkedListDeque l1 = new LinkedListDeque();
-
-    }
+    
 }
