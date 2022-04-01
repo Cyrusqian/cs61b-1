@@ -1,5 +1,7 @@
 package DebugExercise;
 
+import org.junit.runners.JUnit4;
+
 /**
  * Exercise to showcase the step over button.
  * Code adapted from https://stackoverflow.com/questions/4895173/bitwise-multiply-and-add-in-java and https://stackoverflow.com/questions/1533131/what-useful-bitwise-operator-code-tricks-should-a-developer-know-about
@@ -14,6 +16,7 @@ public class DebugExercise2 {
 
         int max = b & w | a & z;
         return max;
+
     }
 
 
@@ -52,6 +55,7 @@ public class DebugExercise2 {
 
         return returnArray;
     }
+
 
     /** Returns the sum of all elements in x. */
     public static int arraySum(int[] x) {

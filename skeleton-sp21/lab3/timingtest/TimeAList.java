@@ -23,5 +23,14 @@ public class TimeAList {
 
     public static void timeAListConstruction() {
         // TODO: YOUR CODE HERE
+        AList<String> l1 = new AList<String>();
+        TimeAList a1 = new TimeAList();
+
+        l1.addLast("hello-world");
+
+
+
+
+
     }
 }
