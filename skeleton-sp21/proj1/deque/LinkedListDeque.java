@@ -1,7 +1,10 @@
 package deque;
 import java.util.Iterator;
 
-public class LinkedListDeque<Elem> implements Iterator<Elem>{
+public class LinkedListDeque<Elem> implements Iterator<Elem>,dequeAPI<Elem>{
+
+
+    /* DequeAPI Interface methods begin: */
 
     private class DNode{
         Elem data;
@@ -15,14 +18,15 @@ public class LinkedListDeque<Elem> implements Iterator<Elem>{
 
     int size;
     DNode sentinel;
-
+    DNode index;
     public LinkedListDeque(){
         sentinel = new DNode(null);
-
+        index = this.sentinel;
         sentinel.front = sentinel;
         sentinel.next = sentinel;
     }
 
+    @Override
     public void addFirst(Elem e){
         size++;
         DNode p = new DNode(e);
@@ -37,6 +41,8 @@ public class LinkedListDeque<Elem> implements Iterator<Elem>{
         sentinel.next = p;
     }
 
+
+    @Override
     public void addLast(Elem e){
         size++;
         DNode p = new DNode(e);
@@ -50,6 +56,7 @@ public class LinkedListDeque<Elem> implements Iterator<Elem>{
         }
     }
 
+    @Override
     public boolean isEmpty(){
         if(size == 0){
             return true;
@@ -58,10 +65,12 @@ public class LinkedListDeque<Elem> implements Iterator<Elem>{
         }
     }
 
+    @Override
     public int size(){
         return size;
     }
 
+    @Override
     public void printDeque(){
         DNode p = sentinel.next;
         while( p != sentinel){
@@ -71,6 +80,7 @@ public class LinkedListDeque<Elem> implements Iterator<Elem>{
         System.out.printf("\n");
     }
 
+    @Override
     public Elem removeFirst(){
         if(size == 0){
             return  null;
@@ -88,6 +98,7 @@ public class LinkedListDeque<Elem> implements Iterator<Elem>{
         return p;
     }
 
+    @Override
     public Elem removeLast(){
         if(size<=1){
             removeFirst();
@@ -99,6 +110,7 @@ public class LinkedListDeque<Elem> implements Iterator<Elem>{
     }
 
 
+    @Override
     public Elem get(int index){
         int i = 0;
         DNode p = sentinel;
@@ -112,13 +124,16 @@ public class LinkedListDeque<Elem> implements Iterator<Elem>{
         return p.data;
     }
 
-    DNode index = sentinel;
+
+    @Override
     public boolean hasNext(){
-        if(this.index.next==sentinel){
+        if(index.next==sentinel){
             return false;
         }
         return true;
     }
+
+    @Override
     public Elem next(){
         if(hasNext()){
             index = index.next;
@@ -126,14 +141,44 @@ public class LinkedListDeque<Elem> implements Iterator<Elem>{
         }
         return null;
     }
+
+    @Override
+    public boolean equal(Object o){
+        if(!(o instanceof  LinkedListDeque)){
+            return false;
+        }
+
+        LinkedListDeque x  = (LinkedListDeque)o;
+        DNode p =x.sentinel.next;
+        DNode q =sentinel.next;
+        while(p!=x.sentinel){
+            if(p.data!=q.data||x.size!=size){
+                return false;
+            }
+            p=p.next;
+            q=q.next;
+        }
+        return true;
+    }
+
+    /* DequeAPI methods End; */
+
+
+
+
+
+    /* Iterator interface methods Begin*/
+
     public void remove(){
         index.front.next=index.next;
         index.next.front=index.front;
     }
 
     public Iterator<Elem> iterator(){
-        Iterator itr = new LinkedListDeque();
+        Iterator itr = this;
         return itr;
     }
-    
+
+    /* Iterator interface methods End */
+
 }

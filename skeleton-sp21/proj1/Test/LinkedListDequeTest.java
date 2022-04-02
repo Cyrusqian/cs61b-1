@@ -1,8 +1,8 @@
-package deque;
+package Test;
 
+import deque.LinkedListDeque;
 import org.junit.Test;
 import static org.junit.Assert.*;
-
 
 /** Performs some basic linked list tests. */
 public class LinkedListDequeTest {
@@ -75,11 +75,11 @@ public class LinkedListDequeTest {
     }
 
     @Test
-    /* Check if you can create LinkedListDeques with different parameterized types*/
+    /* Check if you can create LinkedListDeque with different parameterized types*/
     public void multipleParamTest() {
 
-        LinkedListDeque<String>  lld1 = new LinkedListDeque<String>();
-        LinkedListDeque<Double>  lld2 = new LinkedListDeque<Double>();
+        LinkedListDeque<String> lld1 = new LinkedListDeque<String>();
+        LinkedListDeque<Double> lld2 = new LinkedListDeque<Double>();
         LinkedListDeque<Boolean> lld3 = new LinkedListDeque<Boolean>();
 
         lld1.addFirst("string");
@@ -132,7 +132,7 @@ public class LinkedListDequeTest {
         l1.addLast("world");
         l1.addFirst("I say");
         l1.addLast("Love");
-        LinkedListDeque<String>  l2= new LinkedListDeque<>();
+        LinkedListDeque<String> l2= new LinkedListDeque<>();
         l2.addFirst("hello");
         l2.addLast("world");
         l2.addFirst("I say");
@@ -147,7 +147,7 @@ public class LinkedListDequeTest {
         l1.addLast("world");
         l1.addFirst("I say");
         l1.addLast("Love");
-        LinkedListDeque<String>  l2= new LinkedListDeque<>();
+        LinkedListDeque<String> l2= new LinkedListDeque<>();
         l2.addFirst("hello");
         l2.addLast("world");
         l2.addFirst("I say");
@@ -159,7 +159,7 @@ public class LinkedListDequeTest {
     @Test
     public void EqualTest3(){
         LinkedListDeque<String> l1 = new LinkedListDeque<>();
-        LinkedListDeque<String>  l2= new LinkedListDeque<>();
+        LinkedListDeque<String> l2= new LinkedListDeque<>();
         l2.addFirst("hello");
         l2.addLast("world");
         l2.addFirst("I say");
@@ -171,7 +171,7 @@ public class LinkedListDequeTest {
     @Test
     public void EqualTest4(){
         LinkedListDeque<String> l1 = new LinkedListDeque<>();
-        LinkedListDeque<String>  l2= new LinkedListDeque<>();
+        LinkedListDeque<String> l2= new LinkedListDeque<>();
         boolean result = l1.equals(l2);
         assertTrue(result);
     }
