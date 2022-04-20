@@ -1,14 +1,15 @@
 package deque;
 
+import java.util.Comparator;
 import java.util.Iterator;
 
-public class ArrayDeque<Elem> implements dequeAPI<Elem>,Iterator<Elem>{
+public class MaxArrayDeque<Elem> implements dequeAPI<Elem> {
     int size;
     int length = 8;
     Elem[] data = (Elem[]) new Object[length];
 
-    public ArrayDeque() {
-        size = 0;
+    public MaxArrayDeque(Comparator<Elem> c) {
+
     }
 
     /* DequeAPI interface methods start */
@@ -19,7 +20,7 @@ public class ArrayDeque<Elem> implements dequeAPI<Elem>,Iterator<Elem>{
         checkSize();
         Elem[] Copy = (Elem[]) new Object[length];
         Copy[0] = e;
-        System.arraycopy(data,0,Copy,1,size);
+        System.arraycopy(data, 0, Copy, 1, size);
         data = Copy;
         size++;
 
@@ -72,11 +73,11 @@ public class ArrayDeque<Elem> implements dequeAPI<Elem>,Iterator<Elem>{
     }
 
     @Override
-    public boolean equal(Object o){
-        if(!(o instanceof ArrayDeque))return false;
-           ArrayDeque x = (ArrayDeque)o;
-        for (int i = 0;i<size;i++){
-            if(data[i]!=x.data[i]||x.size!=size){
+    public boolean equal(Object o) {
+        if (!(o instanceof ArrayDeque)) return false;
+        ArrayDeque x = (ArrayDeque) o;
+        for (int i = 0; i < size; i++) {
+            if (data[i] != x.data[i] || x.size != size) {
                 return false;
             }
         }
@@ -91,14 +92,13 @@ public class ArrayDeque<Elem> implements dequeAPI<Elem>,Iterator<Elem>{
     }
 
 
-
     public void checkSize() {
         if (size == length) {
             mulResize(2);
         }
     }
 
-    public Iterator<Elem> iterator(){
+    public Iterator<Elem> iterator() {
         Iterator<Elem> itr = new ArrayDeque<>();
         return itr;
     }
@@ -106,24 +106,19 @@ public class ArrayDeque<Elem> implements dequeAPI<Elem>,Iterator<Elem>{
 
 
     /* Iterator interface methods start */
-   int index = -1;
-   public boolean hasNext(){
-        return index<size-1;
-   }
+    int index = -1;
 
-   public Elem next(){
-       if(hasNext()){
-           index++;
-           return data[index];
-       }
-       return null;
-   }
+    public boolean hasNext() {
+        return index < size - 1;
+    }
 
-
-
-
-
-
+    public Elem next() {
+        if (hasNext()) {
+            index++;
+            return data[index];
+        }
+        return null;
+    }
 
 
 }

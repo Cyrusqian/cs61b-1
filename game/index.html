@@ -1,0 +1,134 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport"
+		content="initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width" />
+	<meta name="format-detection" content="telephone=no" />
+	<meta name="format-detection" content="email=no" />
+	<meta name="format-detection" content="address=no;">
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="default" />
+	<meta name="keywords" content="从中共一大，到如今的生活" />
+	<meta name="description" content="从中共一大，到如今的生活" />
+	<title>不朽之路</title>
+	<link type="text/css" rel="stylesheet" href="wap_game_index.css" media="all" />
+	<script type="text/javascript" src="hczz_index.js" charset="utf-8"></script>
+</head>
+
+<body>
+	<div class="result" id="result" style="display:none;">
+		<ul>
+			<li>GAME OVER</li>
+			<li>你最终到达的是：</li>
+			<li id="resultname">final</li>
+			<li><img id="resultIMG" src="./img/lablogo.png"></li>
+			</li>
+		</ul>
+	</div>
+	<div class="btn_top" id="header">
+		<div class="btn_l">
+			<ul>
+				<li>不朽</li>
+				<li>之路</li>
+			</ul>
+		</div>
+		<div class="btn_r">
+			<div class="btn_s">score: <span id="game_score"> </span></div>
+			<div class="btn_d">从开天辟地到如今的辉煌，让我们感激与敬畏的不朽之路</div>
+		</div>
+	</div>
+	<div class="c"></div>
+
+	<div id="game_body"></div>
+
+	<div class="c"></div>
+	<div class="btn_foot">
+		<script type="text/javascript">
+			document.addEventListener('WeixinJSBridgeReady', function () {
+				onBridgeReady();
+			}, false);
+			function onBridgeReady() {
+				try {
+					var mainTitle = "",
+						mainDesc = "",
+						mainURL = "";
+
+					//转发朋友圈
+					WeixinJSBridge.on("menu:share:timeline", function (e) {
+						WeixinJSBridge.invoke("shareTimeline", {
+							img_url: mainImgUrl,
+							img_width: "120",
+							img_height: "120",
+							link: mainURL,
+							desc: mainDesc,
+							title: mainTitle
+						}, function (res) {
+							dialog();
+							// $(".mask2").css('display','none');
+						});
+					});
+					//同步到微博
+					WeixinJSBridge.on("menu:share:weibo", function () {
+						WeixinJSBridge.invoke("shareWeibo", {
+							"content": mainDesc,
+							"url": mainURL
+						}, function (res) {
+							dialog();
+							// $(".mask2").css('display','none');
+						});
+					});
+					//分享给朋友
+					WeixinJSBridge.on('menu:share:appmessage', function (argv) {
+						WeixinJSBridge.invoke("sendAppMessage", {
+							img_url: mainImgUrl,
+							img_width: "120",
+							img_height: "120",
+							link: mainURL,
+							desc: mainDesc,
+							title: mainTitle
+						}, function (res) {
+							setTimeout(function () {
+								dialog();
+								// $(".mask2").css('display','none');
+							}, 1);
+						});
+					});
+				} catch (e) {
+					alert(e);
+				}
+			};
+			function dialog() {
+				if (URL.getQueryString('f') == 'fans') {
+					return false;
+				}
+				var t = confirm("");
+				if (t) {
+					window.location.href = '';
+				}
+			}
+
+		</script>
+		<div id="reset" class="btn_reset"><span><img src="qc/2014/wap.gif"></span>打回原形</div>
+		<a href="javascript:void(0);" onClick="dialog();return false;">
+			<div id="reset" class="btn_reset floatR"><span><img src="qc/2014/wap2.gif"></span>分享</div>
+		</a>
+	</div>
+	<div class="c"></div>
+	<!--<div class="h60"></div>-->
+	<div class="foot" id="foot">
+		<div class="foot_btn">
+
+		</div>
+	</div>
+
+	<!--<div>当前得分:<span id="game_score">0</span></div>
+<div>最高得分:<span id="game_UPscore">0</span></div>
+<div id="reset">重新开始</div>-->
+	<div style="display:none">
+		最高得分:<span id="game_UPscore" style="display:none">0</span>
+	</div>
+</body>
+
+</html>

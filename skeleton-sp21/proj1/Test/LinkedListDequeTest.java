@@ -137,7 +137,7 @@ public class LinkedListDequeTest {
         l2.addLast("world");
         l2.addFirst("I say");
         l2.addLast("Love");
-        boolean result = l1.equals(l2);
+        boolean result = l1.equal(l2);
         assertTrue(result);
     }
     @Test
@@ -153,7 +153,7 @@ public class LinkedListDequeTest {
         l2.addFirst("I say");
         l2.addLast("Love");
         l2.addLast("COS");
-        boolean result = l1.equals(l2);
+        boolean result = l1.equal(l2);
         assertFalse(result);
     }
     @Test
@@ -165,14 +165,14 @@ public class LinkedListDequeTest {
         l2.addFirst("I say");
         l2.addLast("Love");
         l2.addLast("COS");
-        boolean result = l1.equals(l2);
+        boolean result = l1.equal(l2);
         assertFalse(result);
     }
     @Test
     public void EqualTest4(){
         LinkedListDeque<String> l1 = new LinkedListDeque<>();
         LinkedListDeque<String> l2= new LinkedListDeque<>();
-        boolean result = l1.equals(l2);
+        boolean result = l1.equal(l2);
         assertTrue(result);
     }
 }

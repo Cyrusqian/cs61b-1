@@ -1,5 +1,7 @@
 package randomizedtest;
 
+import edu.princeton.cs.introcs.StdRandom;
+
 /** Array based list.
  *  @author Josh Hug
  */
@@ -52,4 +54,6 @@ public class AListNoResizing<Item> {
         size = size - 1;
         return x;
     }
+
+
 }

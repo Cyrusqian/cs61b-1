@@ -57,15 +57,6 @@ public class LinkedListDeque<Elem> implements Iterator<Elem>,dequeAPI<Elem>{
     }
 
     @Override
-    public boolean isEmpty(){
-        if(size == 0){
-            return true;
-        }else{
-            return false;
-        }
-    }
-
-    @Override
     public int size(){
         return size;
     }

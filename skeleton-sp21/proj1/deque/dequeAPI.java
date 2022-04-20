@@ -7,7 +7,9 @@ public interface dequeAPI<Elem> {
 
     void addLast(Elem e);
 
-    boolean isEmpty();
+    default boolean isEmpty(){
+       return size()==0;
+    }
 
     int size();
 
